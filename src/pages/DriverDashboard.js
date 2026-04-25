@@ -45,8 +45,8 @@ function DriverDashboard() {
   const isComplete = totalPassengers > 0 && returnedCount === totalPassengers;
 
   let statusClass = "status-idle";
-  let statusText = "في انتظار بدء الرحلة...";
-  let statusIcon = "☕";
+  let statusText = "وضع القيادة - رحلة سعيدة";
+  let statusIcon = "☸️"; // رمز يشبه المقود
 
   if (departureSignal) {
     statusClass = "status-depart";
