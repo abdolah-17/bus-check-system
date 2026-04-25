@@ -39,6 +39,17 @@ function BoardingCheck() {
 
   useEffect(() => {
     if (!tripData) navigate("/create-trip");
+
+    // Listen for resets from Driver Dashboard
+    const handleStorageChange = (e) => {
+      if (e.key === "driverDashboardData" && e.newValue) {
+        const newData = JSON.parse(e.newValue);
+        setDepartureSignal(newData.departureSignal);
+        setRestStarted(newData.restStarted);
+      }
+    };
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, [tripData, navigate]);
 
   useEffect(() => {
@@ -91,7 +102,6 @@ function BoardingCheck() {
 
   const totalPassengers = seats.filter((seat) => seat.gender !== null).length;
   const returnedCount = seats.filter((seat) => seat.checked).length;
-  const remainingCount = totalPassengers - returnedCount;
 
   // Sync data to Driver Dashboard
   useEffect(() => {
