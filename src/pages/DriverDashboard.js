@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "../styles/driverDashboard.css";
 
 function DriverDashboard() {
+  const navigate = useNavigate();
+  const { logout } = useAuth();
   const [driverData, setDriverData] = useState({
     totalPassengers: 0,
     returnedCount: 0,
@@ -60,6 +64,11 @@ function DriverDashboard() {
     }
   }
 
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <div className={`driver-dashboard ${statusClass}`} dir="rtl">
       <div className="driver-card glass-effect">
@@ -94,6 +103,10 @@ function DriverDashboard() {
             style={{ width: `${totalPassengers ? (returnedCount / totalPassengers) * 100 : 0}%` }}
           ></div>
         </div>
+
+        <button className="driver-logout-btn" onClick={handleLogout}>
+          🚪 تسجيل الخروج من النظام
+        </button>
       </div>
     </div>
   );

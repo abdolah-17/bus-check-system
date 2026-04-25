@@ -130,11 +130,33 @@
   transition: width 0.5s ease-in-out;
 }
 
+.driver-logout-btn {
+  margin-top: 40px;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.driver-logout-btn:hover {
+  background: rgba(239, 68, 68, 0.4);
+  color: #ffffff;
+}
+
 /* Mobile Adjustments */
 @media (max-width: 768px) {
-  .driver-card { padding: 20px; }
-  .status-text { font-size: 1.8rem; }
-  .status-icon { font-size: 4rem; }
-  .driver-stats-area { flex-direction: column; }
-  .stat-value { font-size: 2.5rem; }
+  .driver-dashboard { padding: 10px; }
+  .driver-card { padding: 20px; border-radius: 16px; }
+  .status-text { font-size: 1.6rem; }
+  .status-icon { font-size: 3.5rem; }
+  .driver-stats-area { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+  .stat-box { padding: 10px; flex: 1 1 40%; }
+  .stat-value { font-size: 1.8rem; }
+  .stat-label { font-size: 0.9rem; }
 }
+

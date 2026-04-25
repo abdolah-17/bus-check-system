@@ -16,6 +16,12 @@ function App() {
           {/* Public Route */}
           <Route path="/" element={<Login />} />
           
+          {/* Protected Routes Without Layout (Full Screen) */}
+          <Route element={<ProtectedRoute allowedRoles={["driver"]} />}>
+            <Route path="/driver-dashboard" element={<DriverDashboard />} />
+          </Route>
+
+          {/* Protected Routes With Sidebar/Layout */}
           <Route element={<Layout />}>
             {/* Manager Only */}
             <Route element={<ProtectedRoute allowedRoles={["manager"]} />}>
@@ -25,11 +31,6 @@ function App() {
             {/* Supervisor Only */}
             <Route element={<ProtectedRoute allowedRoles={["supervisor"]} />}>
               <Route path="/boarding-check" element={<BoardingCheck />} />
-            </Route>
-
-            {/* Driver Only */}
-            <Route element={<ProtectedRoute allowedRoles={["driver"]} />}>
-              <Route path="/driver-dashboard" element={<DriverDashboard />} />
             </Route>
           </Route>
         </Routes>
