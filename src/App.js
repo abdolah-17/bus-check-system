@@ -15,9 +15,7 @@ function App() {
         <Routes>
           {/* Public Route */}
           <Route path="/" element={<Login />} />
-          <Route path="/driver-dashboard" element={<DriverDashboard />} />
           
-          {/* Protected Routes Wrapper */}
           <Route element={<Layout />}>
             {/* Manager Only */}
             <Route element={<ProtectedRoute allowedRoles={["manager"]} />}>
@@ -27,6 +25,11 @@ function App() {
             {/* Supervisor Only */}
             <Route element={<ProtectedRoute allowedRoles={["supervisor"]} />}>
               <Route path="/boarding-check" element={<BoardingCheck />} />
+            </Route>
+
+            {/* Driver Only */}
+            <Route element={<ProtectedRoute allowedRoles={["driver"]} />}>
+              <Route path="/driver-dashboard" element={<DriverDashboard />} />
             </Route>
           </Route>
         </Routes>

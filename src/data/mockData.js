@@ -13,4 +13,11 @@ export const users = [
     role: "supervisor",
     name: "المشرف",
   },
+  {
+    id: 3,
+    username: "driver",
+    password: "1234",
+    role: "driver",
+    name: "السائق",
+  },
 ];

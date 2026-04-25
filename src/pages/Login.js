@@ -56,7 +56,7 @@ function Login() {
 
     if (foundUser.role === "manager") {
       navigate("/create-trip");
-    } else {
+    } else if (foundUser.role === "supervisor") {
       const savedTrip = localStorage.getItem("tripData");
 
       if (!savedTrip) {
@@ -67,6 +67,8 @@ function Login() {
       navigate("/boarding-check", {
         state: JSON.parse(savedTrip),
       });
+    } else if (foundUser.role === "driver") {
+      navigate("/driver-dashboard");
     }
   };
 
@@ -91,6 +93,14 @@ function Login() {
             onClick={() => { setSelectedRole("supervisor"); setErrorMessage(""); }}
           >
             المشرف
+          </button>
+
+          <button
+            type="button"
+            className={`role-btn ${selectedRole === "driver" ? "active-role" : ""}`}
+            onClick={() => { setSelectedRole("driver"); setErrorMessage(""); }}
+          >
+            السائق
           </button>
         </div>
 
@@ -132,6 +142,7 @@ function Login() {
           <p>بيانات التجربة:</p>
           <p>المدير: <span>admin / 1234</span></p>
           <p>المشرف: <span>supervisor / 1234</span></p>
+          <p>السائق: <span>driver / 1234</span></p>
         </div>
       </div>
     </div>
