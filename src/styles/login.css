@@ -1,0 +1,85 @@
+.login-page {
+  /* Inherits from .page-container */
+}
+
+.login-card {
+  max-width: 450px;
+  text-align: center;
+}
+
+.login-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 35px;
+  font-size: 1.1rem;
+}
+
+.role-switch {
+  display: flex;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 6px;
+  border-radius: var(--radius-md);
+  margin-bottom: 30px;
+  gap: 4px;
+}
+
+.role-btn {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  border-radius: calc(var(--radius-md) - 4px);
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.role-btn.active-role {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+/* Form components are now inherited from components.css */
+
+.login-error {
+  color: #ff4d4d;
+  background: rgba(255, 77, 77, 0.1);
+  padding: 12px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 77, 77, 0.2);
+}
+
+/* Buttons inherited from components.css */
+
+.login-help {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--glass-border);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.login-help p:first-child {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}

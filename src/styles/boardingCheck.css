@@ -1,0 +1,215 @@
+.boarding-page {
+  /* Inherits from .page-container */
+}
+
+.boarding-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Header Trip Info */
+.trip-info-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.trip-info-item { display: flex; flex-direction: column; gap: 5px; }
+.info-label { font-size: 0.8rem; color: #94a3b8; font-weight: 600; }
+.info-value { font-size: 1.1rem; font-weight: 800; color: white; }
+
+/* Control Card & Big Stats */
+.rest-control-card {
+  padding: 40px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  background: rgba(30, 41, 59, 0.4);
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.status-pill.active { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
+.status-pill.inactive { background: rgba(255, 255, 255, 0.05); color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.1); }
+
+.big-stats-display { display: flex; align-items: center; gap: 20px; }
+.stat-item { display: flex; flex-direction: column; align-items: center; }
+.stat-val { font-size: 3.5rem; font-weight: 900; line-height: 1; }
+.stat-lbl { font-size: 0.9rem; color: #94a3b8; font-weight: 600; margin-top: 10px; }
+.stat-divider { font-size: 2.5rem; color: rgba(16, 185, 129, 0.3); font-weight: 200; }
+
+/* Buttons moved to components.css */
+.btn-group-vertical { display: flex; flex-direction: column; gap: 15px; }
+.sub-actions { display: flex; gap: 10px; }
+
+/* ------------------------------------------- */
+/* MAP POPUP (BASE) */
+/* ------------------------------------------- */
+.map-popup-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: #0f172a; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 0; animation: fadeIn 0.3s ease;
+}
+
+.map-popup-content {
+  width: 100vw; height: 100vh; background: transparent; display: flex; flex-direction: column; position: relative;
+}
+
+.close-popup-floating {
+  position: fixed; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white; width: 45px; height: 45px; border-radius: 50%; font-size: 1.4rem; cursor: pointer; z-index: 1100; display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+}
+.close-popup-floating:hover { background: #ef4444; border-color: #ef4444; transform: rotate(90deg); }
+
+.popup-body {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  padding: 40px 10px; overflow-y: auto; overflow-x: auto;
+}
+
+.popup-footer-v2 {
+  padding: 25px 60px; background: rgba(15, 23, 42, 0.9); border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(20px);
+}
+.footer-stats { font-size: 1.2rem; font-weight: 700; color: white; }
+.footer-stats .highlight { color: #10b981; font-size: 1.5rem; margin: 0 5px; }
+
+/* ------------------------------------------- */
+/* BUS STRUCTURE (BASE - HORIZONTAL) */
+/* ------------------------------------------- */
+.bus-wrapper { direction: ltr; }
+.horizontal-bus .bus-shell { background: rgba(30, 41, 59, 0.6); display: flex; flex-direction: row; border-radius: 100px 25px 25px 100px; border: 1px solid rgba(255,255,255,0.1); padding: 25px 15px; align-items: center; }
+.horizontal-bus .bus-front { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100px; border-right: 2px solid rgba(255,255,255,0.1); margin-right: 15px; padding-right: 15px; }
+
+.steering-wheel {
+  width: 50px; height: 50px; border: 4px solid #64748b; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+.steering-wheel::after { content: ""; width: 6px; height: 100%; background: #64748b; position: absolute; }
+.steering-wheel::before { content: ""; width: 100%; height: 6px; background: #64748b; position: absolute; top: 60%; }
+
+.driver-seat { font-size: 0.8rem; color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); padding: 6px 10px; border-radius: 8px; }
+.bus-door { font-size: 1.4rem; margin-top: 12px; background: rgba(255, 255, 255, 0.05); padding: 6px; border-radius: 10px; }
+
+.seats-grid-horizontal { display: flex; flex-direction: row; gap: 8px; align-items: flex-start; }
+.bus-column { display: flex; flex-direction: column; justify-content: center; gap: 0; padding-bottom: 42px; }
+.top-seats, .bottom-seats { display: flex; flex-direction: column; gap: 8px; }
+.bus-aisle { height: 30px; }
+
+/* ------------------------------------------- */
+/* SEAT DESIGN */
+/* ------------------------------------------- */
+.seat-box {
+  width: 38px; height: 40px; background: rgba(255, 255, 255, 0.03); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 8px; position: relative; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.seat-box::after { content: ""; position: absolute; top: -8px; left: 10%; width: 80%; height: 14px; background: inherit; border: 2px solid rgba(255,255,255,0.1); border-bottom: none; border-radius: 8px 8px 0 0; z-index: -1; }
+.seat-number { font-size: 0.8rem; font-weight: 900; color: #475569; }
+
+.seat-box.male:not(.checked) { background: rgba(59, 130, 246, 0.1); border: 2px dashed rgba(59, 130, 246, 0.3); color: rgba(59, 130, 246, 0.4); }
+.seat-box.female:not(.checked) { background: rgba(236, 72, 153, 0.1); border: 2px dashed rgba(236, 72, 153, 0.3); color: rgba(236, 72, 153, 0.4); }
+
+.seat-box.checked.male { background: linear-gradient(145deg, #3b82f6, #1d4ed8); border-color: #60a5fa; color: white; box-shadow: 0 5px 0 #1e3a8a, 0 0 20px rgba(59, 130, 246, 0.5); transform: scale(1.05); }
+.seat-box.checked.female { background: linear-gradient(145deg, #ec4899, #be185d); border-color: #f472b6; color: white; box-shadow: 0 5px 0 #831843, 0 0 20px rgba(236, 72, 153, 0.5); transform: scale(1.05); }
+.seat-box.checked .seat-number { color: white; }
+.gender-icon { font-size: 0.85rem; margin-top: 1px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+
+/* ------------------------------------------- */
+/* MEDIA QUERIES (MUST BE AT THE BOTTOM) */
+/* ------------------------------------------- */
+
+/* BIG BUS FOR PC */
+@media (min-width: 769px) {
+  .horizontal-bus .bus-shell { 
+    width: fit-content;
+    max-width: 92vw;
+    padding: 30px 40px; 
+    margin: 20px auto;
+    border-radius: 110px 30px 30px 110px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    overflow-x: auto;
+  }
+  .horizontal-bus .bus-front {
+    width: 90px;
+    margin-right: 15px;
+    padding-right: 12px;
+  }
+  .popup-body {
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+  .seat-box { width: 42px; height: 44px; }
+  .seat-box::after { height: 15px; top: -9px; border-color: rgba(255,255,255,0.1); }
+  .seat-number { font-size: 0.85rem; }
+  .gender-icon { font-size: 0.9rem; }
+  .bus-aisle { height: 35px; }
+  .top-seats, .bottom-seats { gap: 10px; }
+  .seats-grid-horizontal { gap: 12px; }
+  .seat-gender-picker { bottom: -38px; }
+  .bus-column { padding-bottom: 42px; }
+}
+
+.seat-placeholder {
+  width: 42px;
+  height: 44px;
+  visibility: hidden;
+}
+
+/* VERTICAL BUS FOR MOBILE */
+@media (max-width: 768px) {
+  .trip-info-card { flex-direction: column; gap: 15px; }
+  .rest-control-card { flex-direction: column; text-align: center; padding: 30px; }
+  .big-stats-display { justify-content: center; }
+  .stat-val { font-size: 2.5rem; }
+  .popup-footer-v2 { flex-direction: column; gap: 20px; text-align: center; padding: 20px; }
+  
+  /* Force Full Width */
+  .popup-body { padding: 20px 0 0 0; overflow-y: auto; overflow-x: hidden; align-items: stretch; width: 100%; }
+  .horizontal-bus { width: 100%; display: block; margin: 0; padding: 0; }
+  
+  /* Edge-to-Edge Vertical Bus */
+  .horizontal-bus .bus-shell {
+    box-sizing: border-box;
+    min-width: unset; width: 100%; max-width: 100%; flex-direction: column; 
+    padding: 40px 10px 80px 10px; 
+    border-radius: 60px 60px 0 0; 
+    margin: 0; 
+    border-left: none; border-right: none; border-bottom: none;
+  }
+  .horizontal-bus .bus-front {
+    width: 100%; height: auto; min-height: 160px; border-right: none; border-bottom: 2px solid rgba(255, 255, 255, 0.1); margin-right: 0; margin-bottom: 30px; padding-right: 0; padding-bottom: 25px;
+    flex-direction: column; align-items: center; justify-content: flex-start; gap: 15px; position: relative;
+  }
+  
+  .steering-wheel { width: 60px; height: 60px; margin-bottom: 8px; }
+  .driver-seat { font-size: 1rem; font-weight: bold; padding: 8px 20px; background: rgba(255,255,255,0.05); }
+  .bus-door { position: absolute; bottom: 15px; left: 10px; margin: 0; padding: 5px; font-size: 1.6rem; }
+
+  /* Giant Grid */
+  .seats-grid-horizontal { flex-direction: column; gap: 10px; width: 100%; box-sizing: border-box; }
+  .bus-column { flex-direction: row-reverse; width: 100%; justify-content: space-around; align-items: center; padding: 0 8px; }
+  .top-seats, .bottom-seats { flex-direction: row-reverse; gap: 10px; }
+  .bus-aisle { width: 30px; height: 20px; margin: 0; }
+  
+  .seat-box { width: 52px; height: 54px; }
+  .seat-number { font-size: 1rem; }
+  .gender-icon { font-size: 1.1rem; }
+  .seat-cell { margin-bottom: 0; }
+  .seat-gender-picker {
+    bottom: auto;
+    top: -40px;
+  }
+}
+
+/* Animations moved to components.css */

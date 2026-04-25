@@ -1,0 +1,164 @@
+.create-trip-page {
+  /* Inherits from .page-container */
+}
+
+.central-card {
+  max-width: 700px;
+}
+
+.create-trip-title {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-align: center;
+  color: white;
+}
+
+.create-trip-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.create-trip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Modal tip bar */
+.modal-tip-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 0 20px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.modal-tip {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.passenger-counter-badge {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 8px 18px;
+  border-radius: 30px;
+  color: #10b981;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.passenger-counter-badge strong {
+  font-size: 1.2rem;
+  margin: 0 3px;
+}
+
+/* ------------------------------------------- */
+/* INLINE SEAT GENDER PICKER */
+/* ------------------------------------------- */
+.seat-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seat-box.seat-active {
+  border-color: #fbbf24 !important;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.4), 0 0 30px rgba(251, 191, 36, 0.15);
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.seat-gender-picker {
+  position: absolute;
+  bottom: -38px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 100;
+  animation: seatPickerPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.seat-gender-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.seat-gender-btn.male {
+  background: linear-gradient(145deg, #3b82f6, #1d4ed8);
+  border-color: #60a5fa;
+}
+
+.seat-gender-btn.male:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+}
+
+.seat-gender-btn.female {
+  background: linear-gradient(145deg, #ec4899, #be185d);
+  border-color: #f472b6;
+}
+
+.seat-gender-btn.female:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
+}
+
+@keyframes seatPickerPop {
+  0% { transform: translateX(-50%) scale(0.5); opacity: 0; }
+  100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+/* ------------------------------------------- */
+/* CREATE TRIP MODAL OVERLAY (DESKTOP FIX) */
+/* ------------------------------------------- */
+.create-trip-modal-overlay .popup-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.create-trip-modal-overlay .bus-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 700px) {
+  .central-card { padding: 30px 20px; }
+  .create-trip-page { padding: 15px; }
+
+  .modal-tip-bar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Make picker go upward on mobile to avoid overflow */
+  .seat-gender-picker {
+    bottom: auto;
+    top: -50px;
+  }
+
+  @keyframes seatPickerPop {
+    0% { transform: translateX(-50%) scale(0.5); opacity: 0; }
+    100% { transform: translateX(-50%) scale(1); opacity: 1; }
+  }
+}
