@@ -41,6 +41,24 @@ function DriverDashboard() {
     };
   }, []);
 
+  // Handle 15s timeout for departure signal
+  useEffect(() => {
+    if (driverData.departureSignal) {
+      const timer = setTimeout(() => {
+        // Reset the signal in localStorage after 15 seconds
+        const currentData = JSON.parse(localStorage.getItem("driverDashboardData") || "{}");
+        const updatedData = { ...currentData, departureSignal: false, restStarted: false };
+        localStorage.setItem("driverDashboardData", JSON.stringify(updatedData));
+        localStorage.setItem("departureSignal", "false");
+        localStorage.setItem("restStarted", "false");
+        
+        setDriverData(prev => ({ ...prev, departureSignal: false, restStarted: false }));
+      }, 15000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [driverData.departureSignal]);
+
   const { totalPassengers, returnedCount, restStarted, departureSignal } = driverData;
   const isComplete = totalPassengers > 0 && returnedCount === totalPassengers;
 
