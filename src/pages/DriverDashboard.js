@@ -64,12 +64,17 @@ function DriverDashboard() {
 
   let statusClass = "status-idle";
   let statusText = "وضع القيادة - رحلة سعيدة";
-  let statusIcon = "☸️"; // رمز يشبه المقود
+  let statusIcon;
 
   if (departureSignal) {
     statusClass = "status-depart";
     statusText = "اكتمل العدد - تفضل بالانطلاق";
-    statusIcon = "🚌";
+    statusIcon = (
+      <svg className="bus-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M8 6v6M16 6v6M2 9h20M2 15h20M4 9v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9M4 6h16a2 2 0 0 1 2 2v1H2V8a2 2 0 0 1 2-2z"/>
+        <circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
+      </svg>
+    );
   } else if (restStarted) {
     if (isComplete) {
       statusClass = "status-ready";
@@ -80,6 +85,22 @@ function DriverDashboard() {
       statusText = "وقت استراحة - جاري تفقد الركاب";
       statusIcon = "⏳";
     }
+  } else {
+    // Default Driving Mode
+    statusIcon = (
+      <div className="steering-wheel-container">
+        <svg className="steering-wheel-svg" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="45" className="wheel-rim" />
+          <circle cx="50" cy="50" r="40" className="wheel-inner-rim" />
+          <rect x="47" y="10" width="6" height="35" rx="2" className="wheel-spoke" />
+          <rect x="47" y="55" width="6" height="35" rx="2" className="wheel-spoke" />
+          <rect x="10" y="47" width="35" height="6" rx="2" className="wheel-spoke" />
+          <rect x="55" y="47" width="35" height="6" rx="2" className="wheel-spoke" />
+          <circle cx="50" cy="50" r="10" className="wheel-center" />
+          <circle cx="50" cy="50" r="4" fill="white" opacity="0.3" />
+        </svg>
+      </div>
+    );
   }
 
   const handleLogout = () => {
