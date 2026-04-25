@@ -16,24 +16,24 @@
   justify-content: space-between;
   padding: 20px 30px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
 }
 
 .trip-info-item { display: flex; flex-direction: column; gap: 5px; }
-.info-label { font-size: 0.8rem; color: #94a3b8; font-weight: 600; }
-.info-value { font-size: 1.1rem; font-weight: 800; color: white; }
+.info-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+.info-value { font-size: 1.1rem; font-weight: 800; color: var(--text-main); }
 
 /* Control Card & Big Stats */
 .rest-control-card {
   padding: 40px;
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 40px;
-  background: rgba(30, 41, 59, 0.4);
+  background: var(--glass-bg);
 }
 
 .status-pill {
@@ -45,12 +45,12 @@
   margin-bottom: 20px;
 }
 .status-pill.active { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
-.status-pill.inactive { background: rgba(255, 255, 255, 0.05); color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.1); }
+.status-pill.inactive { background: var(--glass-bg); color: var(--text-muted); border: 1px solid var(--glass-border); }
 
 .big-stats-display { display: flex; align-items: center; gap: 20px; }
 .stat-item { display: flex; flex-direction: column; align-items: center; }
-.stat-val { font-size: 3.5rem; font-weight: 900; line-height: 1; }
-.stat-lbl { font-size: 0.9rem; color: #94a3b8; font-weight: 600; margin-top: 10px; }
+.stat-val { font-size: 3.5rem; font-weight: 900; line-height: 1; color: var(--text-main); }
+.stat-lbl { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; margin-top: 10px; }
 .stat-divider { font-size: 2.5rem; color: rgba(16, 185, 129, 0.3); font-weight: 200; }
 
 /* Buttons moved to components.css */
@@ -62,7 +62,7 @@
 /* ------------------------------------------- */
 .map-popup-overlay {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background: #0f172a; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 0; animation: fadeIn 0.3s ease;
+  background: var(--bg-main); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 0; animation: fadeIn 0.3s ease;
 }
 
 .map-popup-content {
@@ -91,16 +91,17 @@
 /* BUS STRUCTURE (BASE - HORIZONTAL) */
 /* ------------------------------------------- */
 .bus-wrapper { direction: ltr; }
-.horizontal-bus .bus-shell { background: rgba(30, 41, 59, 0.6); display: flex; flex-direction: row; border-radius: 100px 25px 25px 100px; border: 1px solid rgba(255,255,255,0.1); padding: 25px 15px; align-items: center; }
-.horizontal-bus .bus-front { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100px; border-right: 2px solid rgba(255,255,255,0.1); margin-right: 15px; padding-right: 15px; }
+.horizontal-bus .bus-shell { background: var(--bg-secondary); display: flex; flex-direction: row; border-radius: 100px 25px 25px 100px; border: 1px solid var(--glass-border); padding: 25px 15px; align-items: center; box-shadow: 0 20px 40px var(--shadow-main); }
+.horizontal-bus .bus-front { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100px; border-right: 2px solid var(--glass-border); margin-right: 15px; padding-right: 15px; }
 
 .steering-wheel {
-  width: 50px; height: 50px; border: 4px solid #64748b; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  width: 50px; height: 50px; border: 4px solid var(--text-muted); border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; box-shadow: 0 4px 15px var(--shadow-main);
 }
-.steering-wheel::after { content: ""; width: 6px; height: 100%; background: #64748b; position: absolute; }
-.steering-wheel::before { content: ""; width: 100%; height: 6px; background: #64748b; position: absolute; top: 60%; }
+.steering-wheel::after { content: ""; width: 6px; height: 100%; background: var(--text-muted); position: absolute; }
+.steering-wheel::before { content: ""; width: 100%; height: 6px; background: var(--text-muted); position: absolute; top: 60%; }
 
-.driver-seat { font-size: 0.8rem; color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); padding: 6px 10px; border-radius: 8px; }
+.driver-seat { font-size: 0.8rem; color: var(--text-muted); border: 1px solid var(--glass-border); padding: 6px 10px; border-radius: 8px; }
+
 .bus-door { font-size: 1.4rem; margin-top: 12px; background: rgba(255, 255, 255, 0.05); padding: 6px; border-radius: 10px; }
 
 .seats-grid-horizontal { display: flex; flex-direction: row; gap: 8px; align-items: flex-start; }
@@ -112,10 +113,11 @@
 /* SEAT DESIGN */
 /* ------------------------------------------- */
 .seat-box {
-  width: 38px; height: 40px; background: rgba(255, 255, 255, 0.03); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 8px; position: relative; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 38px; height: 40px; background: var(--glass-bg); border: 2px solid var(--glass-border); border-radius: 8px; position: relative; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
-.seat-box::after { content: ""; position: absolute; top: -8px; left: 10%; width: 80%; height: 14px; background: inherit; border: 2px solid rgba(255,255,255,0.1); border-bottom: none; border-radius: 8px 8px 0 0; z-index: -1; }
-.seat-number { font-size: 0.8rem; font-weight: 900; color: #475569; }
+.seat-box::after { content: ""; position: absolute; top: -8px; left: 10%; width: 80%; height: 14px; background: inherit; border: 2px solid var(--glass-border); border-bottom: none; border-radius: 8px 8px 0 0; z-index: -1; }
+.seat-number { font-size: 0.8rem; font-weight: 900; color: var(--text-muted); }
+
 
 .seat-box.male:not(.checked) { background: rgba(59, 130, 246, 0.1); border: 2px dashed rgba(59, 130, 246, 0.3); color: rgba(59, 130, 246, 0.4); }
 .seat-box.female:not(.checked) { background: rgba(236, 72, 153, 0.1); border: 2px dashed rgba(236, 72, 153, 0.3); color: rgba(236, 72, 153, 0.4); }

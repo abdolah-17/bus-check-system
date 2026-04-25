@@ -11,7 +11,7 @@
   font-weight: 900;
   margin-bottom: 10px;
   text-align: center;
-  color: white;
+  color: var(--text-main);
 }
 
 .create-trip-subtitle {

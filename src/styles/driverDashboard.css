@@ -36,11 +36,11 @@
   border-radius: 32px;
   padding: 40px;
   text-align: center;
-  background: rgba(15, 23, 42, 0.6) !important;
+  background: var(--glass-bg) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: 0 40px 100px -20px var(--shadow-main) !important;
 }
 
 /* Steering Wheel Styling */
@@ -54,7 +54,7 @@
 .steering-wheel-svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 10px 15px var(--shadow-main));
   animation: rotate-wheel 8s infinite ease-in-out;
 }
 
@@ -67,25 +67,26 @@
 
 .wheel-rim {
   fill: none;
-  stroke: #334155;
+  stroke: var(--text-muted);
   stroke-width: 8;
 }
 
 .wheel-inner-rim {
   fill: none;
-  stroke: #1e293b;
+  stroke: var(--bg-secondary);
   stroke-width: 2;
 }
 
 .wheel-spoke {
-  fill: #475569;
+  fill: var(--text-muted);
 }
 
 .wheel-center {
-  fill: #1e293b;
-  stroke: #475569;
+  fill: var(--bg-secondary);
+  stroke: var(--text-muted);
   stroke-width: 2;
 }
+
 
 .bus-svg {
   width: 120px;

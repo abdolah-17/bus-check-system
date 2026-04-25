@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { users } from "../data/mockData";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 import "../styles/login.css";
 
 function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const [selectedRole, setSelectedRole] = useState("manager");
   const [username, setUsername] = useState("");
@@ -73,7 +75,10 @@ function Login() {
   };
 
   return (
-    <div className="page-container login-page" dir="rtl">
+    <div className={`page-container login-page ${isDarkMode ? "dark-theme" : "light-theme"}`} dir="rtl">
+      <button className="theme-toggle-floating" onClick={toggleTheme}>
+        {isDarkMode ? "☀️" : "🌙"}
+      </button>
       <div className="glass-card login-card">
         <h1 className="login-title">تسجيل الدخول</h1>
         <p className="login-subtitle">أهلاً بك في نظام إدارة الباصات</p>
@@ -149,4 +154,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Login;

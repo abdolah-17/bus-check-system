@@ -7,10 +7,12 @@ import Login from "./pages/Login";
 import CreateTrip from "./pages/CreateTrip";
 import BoardingCheck from "./pages/BoardingCheck";
 import DriverDashboard from "./pages/DriverDashboard";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
-    <AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
       <BrowserRouter>
         <Routes>
           {/* Public Route */}
@@ -36,6 +38,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </AuthProvider>
+    </ThemeProvider>
   );
 }
 

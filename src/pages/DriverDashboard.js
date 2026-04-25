@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 import "../styles/driverDashboard.css";
 
 function DriverDashboard() {
   const navigate = useNavigate();
   const { logout } = useAuth();
+  const { isDarkMode, toggleTheme } = useTheme();
   const [driverData, setDriverData] = useState({
     totalPassengers: 0,
     returnedCount: 0,
@@ -109,7 +111,10 @@ function DriverDashboard() {
   };
 
   return (
-    <div className={`driver-dashboard ${statusClass}`} dir="rtl">
+    <div className={`driver-dashboard ${statusClass} ${isDarkMode ? "dark-theme" : "light-theme"}`} dir="rtl">
+      <button className="theme-toggle-floating" onClick={toggleTheme}>
+        {isDarkMode ? "☀️" : "🌙"}
+      </button>
       <div className="driver-card glass-effect">
         <div className="driver-header">
           <h1>شاشة السائق</h1>

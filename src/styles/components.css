@@ -22,7 +22,7 @@
   width: 100%;
   border-radius: var(--radius-lg);
   border: 1px solid var(--glass-border);
-  background: rgba(15, 23, 42, 0.4);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 40px;
@@ -48,10 +48,10 @@
 .form-input {
   width: 100%;
   padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  color: white;
+  color: var(--text-main);
   font-size: 1rem;
   transition: var(--transition-fast);
 }
@@ -135,9 +135,9 @@ select.form-input option {
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  color: white;
+  color: var(--text-main);
 }
 
 .btn-secondary:hover {
@@ -168,13 +168,13 @@ select.form-input option {
 .modal-content {
   width: 100%;
   max-width: 600px;
-  background: #0f172a;
+  background: var(--bg-secondary);
   border-radius: var(--radius-lg);
   border: 1px solid var(--glass-border);
   display: flex;
   flex-direction: column;
   max-height: 90vh;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 40px 100px var(--shadow-main);
   position: relative;
 }
 
@@ -217,9 +217,10 @@ select.form-input option {
   border-top: 1px solid var(--glass-border);
   display: flex;
   gap: 15px;
-  background: rgba(15, 23, 42, 0.9);
+  background: var(--bg-secondary);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
+
 
 /* ------------------------------------------- */
 /* Animations */

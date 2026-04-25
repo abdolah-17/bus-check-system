@@ -1,12 +1,14 @@
 import React from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 import "../styles/layout.css";
 
 const Layout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, logout } = useAuth();
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const menuItems = [
     { title: "إنشاء رحلة", path: "/create-trip", icon: "➕", roles: ["manager"] },
@@ -21,7 +23,7 @@ const Layout = () => {
   };
 
   return (
-    <div className="layout-container" dir="rtl">
+    <div className={`layout-container ${isDarkMode ? "dark-theme" : "light-theme"}`} dir="rtl">
       <aside className="sidebar glass-effect">
         <div className="sidebar-header">
           <h2 className="logo-text">نظام الباصات</h2>
@@ -51,11 +53,16 @@ const Layout = () => {
           <h1 className="page-title">
             {menuItems.find((item) => item.path === location.pathname)?.title || "لوحة التحكم"}
           </h1>
-          <div className="user-profile">
-            <div className="user-avatar">👤</div>
-            <span className="user-name">
-              {user?.role === "manager" ? "المدير" : "المشرف"} ({user?.username})
-            </span>
+          <div className="header-actions">
+            <button className="theme-toggle-btn" onClick={toggleTheme}>
+              {isDarkMode ? "☀️" : "🌙"}
+            </button>
+            <div className="user-profile">
+              <div className="user-avatar">👤</div>
+              <span className="user-name">
+                {user?.role === "manager" ? "المدير" : "المشرف"} ({user?.username})
+              </span>
+            </div>
           </div>
         </header>
         <section className="page-container">
